@@ -1,4 +1,3 @@
-/* globals articles */
 'use strict';
 
 let newArticleView = {};
@@ -11,6 +10,23 @@ newArticleView.handleMainNav = () => {
   });
 
   $('nav .tab:first').click();
+};
+
+newArticleView.setTeasers = () => {
+  $('.article-body *:nth-of-type(n+2)').hide();
+  $('article').on('click', 'a.read-on', function(e) {
+    e.preventDefault();
+    if ($(this).text() === 'Read on →') {
+      $(this).parent().find('*').fadeIn();
+      $(this).html('Show Less &larr;');
+    } else {
+      $('body').animate({
+        scrollTop: ($(this).parent().offset().top)
+      },200);
+      $(this).html('Read on &rarr;');
+      $(this).parent().find('.article-body *:nth-of-type(n+2)').hide();
+    }
+  });
 };
 
 // COMMENT: Where is this function called? Why?
@@ -53,6 +69,7 @@ newArticleView.initNewArticlePage = () => {
 
     // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
     $('#article-json').val(JSON.stringify(articleDataObj) + ',');
+    newArticleView.setTeasers();
     $('nav .tab:last').click();
   });
 };

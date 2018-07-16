@@ -13,6 +13,19 @@
   <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
   <link>
   <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
+  <script id="article-template" type="text/x-handlebars-template">
+    <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+      <header>
+        <h1>{{title}}</h1>
+        <div>
+          By <address><a href="{{authorUrl}}">{{author}}</a></address>
+          {{publishStatus}}
+        </div>
+      </header>
+      <section class="article-body">{{{body}}}</section>
+      <a href="#" class="read-on">Read on &rarr;</a>
+    </article>
+  </script>
 </head>
 
 <body>
@@ -71,7 +84,7 @@
     <section id="articles" class="tab-content">
       <!-- NOTE: This is where we will display our article preview -->
       <section id="preview">
-        
+
       </section>
       <!--
         TODO: Refer to the preview image to see what we will be building here:
@@ -109,7 +122,7 @@
     //  Hint: Look in articleView.js for a function that does this.
     newArticleView.initNewArticlePage();
     // COMMENT: What is this function doing? Why do we need it?
-    // PUT YOUR RESPONSE HERE
+    // This function calls a method (initNewArticlePage) from the newArticleView object. Code inside sets up the page and functionality
   </script>
 </body>
 
