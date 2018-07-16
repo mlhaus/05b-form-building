@@ -43,7 +43,7 @@
            4. Author's URL
            5. Article category
            6. Some way to know if this article is a draft or is published -->
-      <form action="#" id="new-form">
+      <form id="new-form">
         <label>
           <input type="text" id="article-title" placeholder="Article title" required>
         </label>
@@ -62,14 +62,17 @@
         <label>
           <input type="checkbox" id="article-published"> Published
         </label>
+        <label>
+          <input type="submit" value="Generate Post">
+        </label>
       </form>
     </section>
 
     <section id="articles" class="tab-content">
       <!-- NOTE: This is where we will display our article preview -->
-    </section>
-
-    <section id="article-export">
+      <section id="preview">
+        
+      </section>
       <!--
         TODO: Refer to the preview image to see what we will be building here:
         we need a container of some kind to hold a JSON export of our article.
@@ -77,7 +80,17 @@
         and also be clickable to allow easy selection of the text it holds.
         What kind of element could we use for this?
       -->
+      <section id="article-export">
+        <label>
+          <input id="article-json" readonly >
+          Copy this into <code>blogArticles.js</code> to save!
+        </label>
+      </section>
     </section>
+
+    <!-- <section id="article-export">
+      I moved this code to the previous section above
+    </section> -->
 
   </main>
   <footer>
@@ -89,12 +102,12 @@
   <!-- NOTE (stretch goal): Include script tags for 3rd party libraries to enable Markdown rendering and code syntax highlighting. Use the minified CDN. Keep in mind that if we want these features to render properly on our main blog page (index.html) that we'll need to add those scripts over there, too. -->
   <script src="scripts/blogArticles.js"></script>
   <script src="scripts/article.js"></script>
-  <script src="scripts/articleView.js"></script>
+  <script src="scripts/newArticleView.js"></script>
   <script>
     // TODO: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
     // (Look at the bottom of index.html as a reference. Since we are now using our JS on two different HTML pages that have different needs as to what parts of the code they utilize, we need to build a function that inializes each page.)
     //  Hint: Look in articleView.js for a function that does this.
-
+    newArticleView.initNewArticlePage();
     // COMMENT: What is this function doing? Why do we need it?
     // PUT YOUR RESPONSE HERE
   </script>
